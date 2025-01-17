@@ -88,3 +88,7 @@ logs/
 
 # .NET Core publish files
 publish/
+
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
