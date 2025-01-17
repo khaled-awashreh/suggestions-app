@@ -1,5 +1,90 @@
+## Ignore build results ##
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer Package files
+*.exe
+*.dll
+*.app
+*.appref-ms
+
+## User-specific files ##
+# User-specific files for Visual Studio for Mac
+.vscode/
+
+# User-specific files for Visual Studio Code
+.idea/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer Package files
+*.exe
+*.dll
+
+# User-specific files for Rider
+.idea/
+
+# User-specific files for Visual Studio
+.vs2019/
+.vs2017/
+.vs/
+
+# User-specific files for JetBrains Rider
+.idea/
+
+## .NET Core ##
+# Ignore build and output directories
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# JetBrains Rider
+.idea/
+
+# ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+
+## Azure Pipelines ##
+.vsts/
+
+## Windows Installer files ##
+*.cab
+*.msi
+
+# User-specific files for Visual Studio
+.vs/
+
+# Windows Installer files
+*.cab
+*.msi
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## .NET CLI ##
+# .NET Core generated files
+*.xproj
+.vscode/
+
+# Ignore ASP.NET Core module log files
+logs/
+
+# .NET Core publish files
+publish/
