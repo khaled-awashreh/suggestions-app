@@ -4,14 +4,17 @@ public class User
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    private string _id { get; set; }
+    public string Id { get; set; }
 
-    private string _objectIdentifier { get; set; }
-    private string _firstName { get; set; }
-    private string _lastName { get; set; }
-    private string _email { get; set; }
+    public string ObjectIdentifier { get; set; }
 
-    // I dont like this idea of mapping but let's see where it leads
-    private List<BasicSuggestion> _authoredSuggestions { get; set; } = new();
-    private List<BasicSuggestion> _votedOnSuggestions { get; set; } = new();
+    public string FirstName { get; set; }
+
+    public string LastName { get; set; }
+
+    public string Email { get; set; }
+
+    public List<BasicSuggestion> AuthoredSuggestions { get; set; } = new List<BasicSuggestion>();
+
+    public List<BasicSuggestion> VotedOnSuggestions { get; set; } = new List<BasicSuggestion>();
 }

@@ -4,7 +4,15 @@ public class BasicSuggestion
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    private string _id { get; set; }
-    
-    private string _title { get; set; }
+    public string Id { get; set; }
+
+    public string SuggestionText { get; set; }
+
+    public BasicSuggestion() {}
+
+    public BasicSuggestion(Suggestion suggestion)
+    {
+        this.Id = suggestion.Id;
+    }
+
 }
