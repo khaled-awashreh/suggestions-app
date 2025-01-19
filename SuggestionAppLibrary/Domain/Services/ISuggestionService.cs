@@ -1,6 +1,6 @@
-namespace SuggestionAppLibrary.DataAccess;
+namespace SuggestionAppLibrary.Domain.Services;
 
-public interface ISuggestionDao
+public interface ISuggestionService
 {
     public Task<List<Suggestion>> GetAllSuggestionsAsync();
 
@@ -8,4 +8,6 @@ public interface ISuggestionDao
     
     public Task Save(Suggestion sugestion);
 
+    
+    public Task UpvoteASuggestion(string id, string userId);
 }

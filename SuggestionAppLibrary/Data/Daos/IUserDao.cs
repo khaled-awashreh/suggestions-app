@@ -9,6 +9,5 @@ public interface IUserDao
     public Task<User> GetByAuthenticationId(string objectId);
 
     public Task Save(User user);
-
-    public Task Update(User user);
+    
 }

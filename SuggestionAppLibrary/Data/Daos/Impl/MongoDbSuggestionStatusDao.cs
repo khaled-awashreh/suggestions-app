@@ -15,7 +15,7 @@ public class MongoDbSuggestionStatusDao : ISuggestionStatusDao
         {
             var results = await _statuses.FindAsync(_ => true);
             output = results.ToList();
-            _cache.Set(_cacheKey, _statuses, DateTimeOffset.Now.AddDays(1));
+            _cache.Set(_cacheKey, _statuses, TimeSpan.FromDays(1));
         }
 
         return output.ToList();
@@ -29,12 +29,9 @@ public class MongoDbSuggestionStatusDao : ISuggestionStatusDao
 
     public Task Save(SuggestionStatus status)
     {
-        return _statuses.InsertOneAsync(status);
-    }
-
-    public Task Update(SuggestionStatus status)
-    {
         var filter = Builders<SuggestionStatus>.Filter.Eq(s => s.Id, status.Id);
-        return _statuses.ReplaceOneAsync(filter, status, new ReplaceOptions { IsUpsert = true });
+        var operation = _statuses.ReplaceOneAsync(filter, status, new ReplaceOptions { IsUpsert = true });
+        _cache.Remove(_cacheKey);
+        return operation;
     }
 }

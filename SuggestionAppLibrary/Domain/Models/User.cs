@@ -13,8 +13,5 @@ public class User
     public string LastName { get; set; }
 
     public string Email { get; set; }
-
-    public List<BasicSuggestion> AuthoredSuggestions { get; set; } = new List<BasicSuggestion>();
-
-    public List<BasicSuggestion> VotedOnSuggestions { get; set; } = new List<BasicSuggestion>();
+    
 }

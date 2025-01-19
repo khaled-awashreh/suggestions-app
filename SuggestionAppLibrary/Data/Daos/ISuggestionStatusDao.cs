@@ -8,5 +8,4 @@ public interface ISuggestionStatusDao
     
     public Task Save(SuggestionStatus status);
 
-    public Task Update(SuggestionStatus status);
 }

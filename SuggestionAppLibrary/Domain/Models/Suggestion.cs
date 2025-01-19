@@ -13,18 +13,12 @@ public class Suggestion
     public string Author { get; set; }
 
     public string Notes { get; set; }
-
-    public DateTime CreatedOn { get; set; } = DateTime.Now;
-
-    public HashSet<string> VotedUsers { get; set; } = new HashSet<string>();
-
+    
     public Category Category { get; set; }
 
     public SuggestionStatus Status { get; set; }
-
     public bool ApprovedForRelease { get; set; } = false;
 
     public bool Archived { get; set; } = false;
-
     public bool Rejected { get; set; } = false;
 }

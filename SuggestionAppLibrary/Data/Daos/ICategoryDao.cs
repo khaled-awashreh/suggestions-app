@@ -8,5 +8,4 @@ public interface ICategoryDao
     
     public Task Save(Category category);
 
-    public Task Update(Category category);
 }

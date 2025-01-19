@@ -35,12 +35,11 @@ public class MongoDbCategoryDao : ICategoryDao
 
     public Task Save(Category category)
     {
-        return _categories.InsertOneAsync(category);
-    }
-
-    public Task Update(Category category)
-    {
+        _cache.Remove(_cacheKey);
         var filter = Builders<Category>.Filter.Eq(c => c.Id, category.Id);
-        return _categories.ReplaceOneAsync(filter, category, new ReplaceOptions { IsUpsert = true });
+        var operation= _categories.ReplaceOneAsync(filter, category, new ReplaceOptions { IsUpsert = true });
+        _cache.Remove(_cacheKey);
+        return operation;
     }
+    
 }

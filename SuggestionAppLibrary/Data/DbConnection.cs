@@ -15,11 +15,13 @@ public class DbConnection :IDbConnection
     public string StatusCollectionName  { get; private set; } = "statuses";
     public string UserCollectionName  { get; private set; } = "users";
     public string SuggestionCollectionName  { get; private set; } = "suggestions";
-    
+    public string SuggestionVoteCollectionName { get; }
+
     public MongoClient Client { get; private set; }
     public IMongoCollection<Category> CategoryCollection { get; private set; }
     public IMongoCollection<Suggestion> SuggestionCollection { get; private set; }
     public IMongoCollection<User> UserCollection { get; private set; }
+    public IMongoCollection<SuggestionVotes> SuggestionVoteCollection { get; }
     public IMongoCollection<SuggestionStatus> StatusCollection { get; private set; }
     public DbConnection(IConfiguration configuration)
     {
@@ -32,5 +34,6 @@ public class DbConnection :IDbConnection
         SuggestionCollection = _database.GetCollection<Suggestion>(SuggestionCollectionName);
         UserCollection = _database.GetCollection<User>(UserCollectionName);
         StatusCollection = _database.GetCollection<SuggestionStatus>(StatusCollectionName);
+        SuggestionVoteCollection = _database.GetCollection<SuggestionVotes>(SuggestionVoteCollectionName);
     }
 }
