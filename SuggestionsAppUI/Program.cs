@@ -4,6 +4,7 @@ using SuggestionsAppUI.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.ConfigureServices();
+builder.ConfigureDependencyInjection();
 
 var app = builder.Build();
 
