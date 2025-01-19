@@ -2,7 +2,7 @@ namespace SuggestionAppLibrary.DataAccess;
 
 public interface ISuggestionStatusDao
 {
-    public Task<List<SuggestionStatus>> GetStatusesAsync();
+    public Task<List<SuggestionStatus>> GetAllStatusesAsync();
 
     public Task<SuggestionStatus> GetById(string id);
     
