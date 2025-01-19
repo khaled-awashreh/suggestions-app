@@ -1,24 +1,46 @@
+using Microsoft.Extensions.Caching.Memory;
+
 namespace SuggestionAppLibrary.DataAccess;
 
-public class MongoDbCategoryDao: ICategoryDao
+public class MongoDbCategoryDao : ICategoryDao
 {
-    public Task<List<Category>> GetCategoriesAsync()
+    private IMongoCollection<Category> _categories;
+    private IMemoryCache _cache;
+    private const string _cacheKey = "categoriesData";
+
+    public MongoDbCategoryDao(IMongoCollection<Category> categories, IMemoryCache cache)
     {
-        throw new NotImplementedException();
+        _categories = categories;
+        _cache = cache;
     }
 
-    public Task<Category> GetById(string id)
+    public async Task<List<Category>> GetCategoriesAsync()
     {
-        throw new NotImplementedException();
+        var output = _cache.Get<List<Category>>(_cacheKey);
+        if (output == null)
+        {
+            var results = await _categories.FindAsync(_ => true);
+            output = results.ToList();
+            _cache.Set(_cacheKey, output, TimeSpan.FromDays(1));
+        }
+
+        return output;
+    }
+
+    public async Task<Category> GetById(string id)
+    {
+        var results = await _categories.FindAsync(category => category.Id == id);
+        return results.FirstOrDefault();
     }
 
     public Task Save(Category category)
     {
-        throw new NotImplementedException();
+        return _categories.InsertOneAsync(category);
     }
 
     public Task Update(Category category)
     {
-        throw new NotImplementedException();
+        var filter = Builders<Category>.Filter.Eq(c => c.Id, category.Id);
+        return _categories.ReplaceOneAsync(filter, category, new ReplaceOptions { IsUpsert = true });
     }
 }

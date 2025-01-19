@@ -4,9 +4,9 @@ public class Category
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    private string _id { get; set; }
+    public string Id { get; set; }
 
-    private string _name { get; set; }
+    public string Name { get; set; }
     
-    private string _description { get; set; }
+    public string Description { get; set; }
 }
