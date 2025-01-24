@@ -30,5 +30,7 @@ public class MongoDbUserDao : IUserDao
     public Task Save(User user)
     {
         var filter = Builders<User>.Filter.Eq(u => u.Id, user.Id);
-        return _users.ReplaceOneAsync(filter, user, new ReplaceOptions() { IsUpsert = true });    }
+        return _users.ReplaceOneAsync(filter, user, new ReplaceOptions() { IsUpsert = true });
+        
+    }
 }

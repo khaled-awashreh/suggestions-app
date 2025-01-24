@@ -7,14 +7,12 @@ public class CategoryService : ICategoryService
     {
         return _categoryDao.GetCategoriesAsync();
     }
-
     public Task<Category> GetById(string id)
     {
         return _categoryDao.GetById(id);
     }
-
-    public Task Save(Category category)
+    public async Task Save(Category category)
     {
-        return _categoryDao.Save(category);
+        await _categoryDao.Save(category);
     }
 }
